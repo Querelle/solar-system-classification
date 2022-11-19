@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { IAstros } from './interfaces/astro.interface';
+import { data } from '../data';
 
 @Component({
     selector: 'ssc-root',
@@ -6,4 +8,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {}
+export class AppComponent {
+    public astros: IAstros = data;
+}
