@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(sanitize.css);
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}

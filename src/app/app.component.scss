@@ -1,0 +1,27 @@
+/*
+* This page uses ViewEncapsulation.None,
+* which means every rule declared below has a global scope.
+* To avoid unwanted effects make sure to wrap everything in the my-ssc-app class
+*/
+
+.my-ssc-app {
+  .my-ssc-app--header {
+    display: flex;
+    height: 8vh;
+
+    .icon {
+      font-size: 2.5rem;
+    }
+
+    .my-ssc-app-header--title {
+      margin-left: 32px;
+      font-size: 1.8rem;
+    }
+  }
+
+  .my-ssc-app--main {
+    display: block;
+    padding: 32px 16px;
+    height: 92vh;
+  }
+}
