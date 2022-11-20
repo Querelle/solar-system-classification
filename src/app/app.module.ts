@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AstroTableComponent } from './components/astro-table/astro-table.component';
 import { ConcatPipe } from './pipes/concat.pipe';
+import { BaseButtonComponent } from './components/base-button/base-button.component';
 
-const COMPONENTS = [HeaderComponent, AstroTableComponent];
+const COMPONENTS = [HeaderComponent, AstroTableComponent, BaseButtonComponent];
 const PIPES = [ConcatPipe];
 
 @NgModule({
