@@ -37,11 +37,6 @@ export class AstroFormComponent implements OnInit {
         );
     }
 
-    public check() {
-        console.log('dirty: ', this.astroForm.dirty);
-        console.log('touched: ', this.astroForm.touched);
-    }
-
     ngOnInit() {
         console.log(this.astroForm.dirty);
         this.astroForm.valueChanges.subscribe({

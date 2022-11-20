@@ -7,23 +7,22 @@ export const data: IAstros = [
         eq_diameter: {
             type: MeasurementType.RANGE,
             measurement: {
-                value: 90000,
-                delta: 100,
+                value: 45453,
+                delta: 45,
                 unit: 'km',
             },
         },
         albedo: {
             type: MeasurementType.APPROXIMATION,
             measurement: {
-                value: 90000,
+                value: 90700,
                 unit: 'km',
             },
         },
         av_sun_earth: {
-            type: MeasurementType.RANGE,
+            type: MeasurementType.MEAN,
             measurement: {
-                value: 90000,
-                delta: 100,
+                value: 9985,
                 unit: 'km',
             },
         },
@@ -34,26 +33,24 @@ export const data: IAstros = [
         code: 86532,
         name: 'Mars',
         eq_diameter: {
-            type: MeasurementType.RANGE,
+            type: MeasurementType.MEAN,
             measurement: {
-                value: 90000,
-                delta: 100,
+                value: 8000,
                 unit: 'km',
             },
         },
         albedo: {
             type: MeasurementType.RANGE,
             measurement: {
-                value: 90000,
-                delta: 100,
+                value: 790000,
+                delta: 236,
                 unit: 'km',
             },
         },
         av_sun_earth: {
-            type: MeasurementType.RANGE,
+            type: MeasurementType.APPROXIMATION,
             measurement: {
-                value: 90000,
-                delta: 100,
+                value: 955.89,
                 unit: 'km',
             },
         },
@@ -66,7 +63,7 @@ export const data: IAstros = [
         eq_diameter: {
             type: MeasurementType.RANGE,
             measurement: {
-                value: 90000,
+                value: 6000,
                 delta: 100,
                 unit: 'km',
             },
@@ -74,15 +71,15 @@ export const data: IAstros = [
         albedo: {
             type: MeasurementType.RANGE,
             measurement: {
-                value: 90000,
-                delta: 100,
+                value: 5300,
+                delta: 10,
                 unit: 'km',
             },
         },
         av_sun_earth: {
             type: MeasurementType.RANGE,
             measurement: {
-                value: 90000,
+                value: 78000,
                 delta: 100,
                 unit: 'km',
             },

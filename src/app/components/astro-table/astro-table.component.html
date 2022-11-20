@@ -30,9 +30,9 @@
     <tr>
         <td>{{astro.code}}</td>
         <td>{{astro.name}}</td>
-        <td>{{astro.eq_diameter | json}}</td>
-        <td>{{astro.albedo | json}}</td>
-        <td>{{astro.av_sun_earth | json}}</td>
+        <td>{{astro.eq_diameter | measurementRender}}</td>
+        <td>{{astro.albedo | measurementRender}}</td>
+        <td>{{astro.av_sun_earth | measurementRender}}</td>
         <td>
             {{astro.discoverer | concatPipe}}
         </td>

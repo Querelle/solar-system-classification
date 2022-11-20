@@ -8,10 +8,11 @@ import { AstroTableComponent } from './components/astro-table/astro-table.compon
 import { ConcatPipe } from './pipes/concat.pipe';
 import { AstroFormComponent } from './components/astro-form/astro-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MeasurementRenderPipe } from './pipes/measurementRender.pipe';
 import { BaseButtonComponent } from './components/base-button/base-button.component';
 
+const PIPES = [ConcatPipe, MeasurementRenderPipe];
 const COMPONENTS = [HeaderComponent, AstroTableComponent, AstroFormComponent, BaseButtonComponent];
-const PIPES = [ConcatPipe];
 
 @NgModule({
     declarations: [AppComponent, ...COMPONENTS, ...PIPES],
