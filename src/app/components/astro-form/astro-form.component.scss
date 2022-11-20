@@ -1,0 +1,24 @@
+.astro-form--wrapper {
+  padding: 36px;
+
+  .control-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin: 8px 0;
+
+    input,
+    select {
+      background-color: #f5f5f5;
+      border: unset;
+      border-bottom: 1px solid #8f8f8f;
+      padding: 10px 12px;
+    }
+
+    input:hover,
+    select:hover,
+    {
+      background-color: #ececec;
+    }
+  }
+}

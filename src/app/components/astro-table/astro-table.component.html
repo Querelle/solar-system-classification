@@ -22,16 +22,22 @@
     </table>
 </section>
 
+<!--
+- Single table row template:
+- this row is repeated each time a new astro object is added to the table.
+-->
 <ng-template #tableRow let-astro="astro">
     <tr>
         <td>{{astro.code}}</td>
         <td>{{astro.name}}</td>
-        <td>{{astro.eq_diameter}}</td>
-        <td>{{astro.albedo}}</td>
-        <td>{{astro.av_sun_earth}}</td>
+        <td>{{astro.eq_diameter | json}}</td>
+        <td>{{astro.albedo | json}}</td>
+        <td>{{astro.av_sun_earth | json}}</td>
         <td>
             {{astro.discoverer | concatPipe}}
         </td>
         <td>{{astro.discovery_date | date: 'dd/MM/YYYY'}}</td>
     </tr>
 </ng-template>
+
+<ssc-astro-form></ssc-astro-form>
