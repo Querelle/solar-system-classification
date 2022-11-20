@@ -98,6 +98,11 @@
                 <div class="control-wrapper">
                     <label>Value</label>
                     <input formControlName="value" name="value" type="text">
+                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.value')!.touched &&
+                    astroForm.get(formGroup)!.get('measurement.value')!.hasError('required')"
+                    >
+                        This field is required.
+                    </span>
                 </div>
             </ng-container>
 
@@ -105,6 +110,11 @@
                 <div class="control-wrapper">
                     <label>Value</label>
                     <input formControlName="value" name="value" type="text">
+                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.value')!.touched &&
+                    astroForm.get(formGroup)!.get('measurement.value')!.hasError('required')"
+                    >
+                        This field is required.
+                    </span>
                 </div>
             </ng-container>
 
@@ -112,11 +122,21 @@
                 <div class="control-wrapper">
                     <label>Value</label>
                     <input formControlName="value" name="value" type="text">
+                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.value')!.touched &&
+                    astroForm.get(formGroup)!.get('measurement.value')!.hasError('required')"
+                    >
+                        This field is required.
+                    </span>
                 </div>
 
                 <div class="control-wrapper">
                     <label>Delta</label>
                     <input formControlName="delta" name="delta" type="text">
+                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.delta')!.touched &&
+                    astroForm.get(formGroup)!.get('measurement.delta')!.hasError('required')"
+                    >
+                        This field is required.
+                    </span>
                 </div>
             </ng-container>
 

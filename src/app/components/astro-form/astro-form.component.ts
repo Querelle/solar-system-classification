@@ -24,17 +24,14 @@ export class AstroFormComponent implements OnInit {
     constructor(private astroValidator: AstroValidators) {}
 
     public newMeasurement(): FormGroup {
-        return new FormGroup<any>(
-            {
-                type: new FormControl(null, [Validators.required]),
-                measurement: new FormGroup({
-                    value: new FormControl(null, []),
-                    delta: new FormControl(null, []),
-                    unit: new FormControl(null, []),
-                }),
-            },
-            this.astroValidator.checkMeasurement,
-        );
+        return new FormGroup<any>({
+            type: new FormControl(null, [Validators.required]),
+            measurement: new FormGroup({
+                value: new FormControl(null, [Validators.required]),
+                delta: new FormControl(null, [this.astroValidator.requiredByRange]),
+                unit: new FormControl(null, []),
+            }),
+        });
     }
 
     ngOnInit() {
