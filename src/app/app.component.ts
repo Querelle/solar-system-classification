@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { IAstros } from './interfaces/astro.interface';
-import { data } from '../data';
+import { AstroService } from './services/astro.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ssc-root',
@@ -9,5 +10,7 @@ import { data } from '../data';
     encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
-    public astros: IAstros = data;
+    public astro$: Observable<IAstros> = this.astroService.astro();
+
+    constructor(private astroService: AstroService) {}
 }

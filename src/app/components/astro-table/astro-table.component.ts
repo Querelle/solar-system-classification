@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IAstro, IAstros } from '../../interfaces/astro.interface';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ssc-astro-table',
@@ -7,7 +8,7 @@ import { IAstro, IAstros } from '../../interfaces/astro.interface';
     styleUrls: ['astro-table.component.scss'],
 })
 export class AstroTableComponent {
-    @Input() astros!: IAstros;
+    @Input() astro$!: Observable<IAstros>;
 
     public tracker(index: number, astro: IAstro): number {
         return astro.code;
