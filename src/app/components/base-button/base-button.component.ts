@@ -9,6 +9,7 @@ export class BaseButtonComponent {
     @Input() icon!: string;
     @Input() label!: string;
     @Input() disabled_btn!: string;
+    @Input() type: string = 'button';
 
     @Output() clicked: EventEmitter<void> = new EventEmitter<void>();
 

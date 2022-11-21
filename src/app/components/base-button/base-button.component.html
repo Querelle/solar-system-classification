@@ -1,4 +1,8 @@
-<button (click)="whenClicked()" [disabled]="disabled_btn" [ngClass]="disabled_btn? 'disabled my-btn' : 'my-btn'">
-    <span class="material-symbols-outlined scale">{{icon}}</span>
-    <span>{{label}}</span>
+<button (click)="whenClicked()"
+        [disabled]="disabled_btn"
+        [ngClass]="disabled_btn? 'disabled my-btn' : 'my-btn'"
+        [type]="type"
+>
+    <span *ngIf="!!icon" class="material-symbols-outlined scale">{{icon}}</span>
+    <span *ngIf="!!label">{{label}}</span>
 </button>

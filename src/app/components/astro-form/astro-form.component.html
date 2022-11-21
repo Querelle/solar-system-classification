@@ -74,19 +74,45 @@
         </ng-container>
     </form>
 
+    <form formArrayName="discoverers">
+        <div class="control-wrapper">
+            <label>Discoverer(s)</label>
+            <ssc-base-button (clicked)="pushNewDiscoverer()" icon="person_add" label="Add discoverer"></ssc-base-button>
+            <ng-container *ngFor="let discoverer of discoverers?.controls; let i = index">
+                <form formGroupName="{{i}}">
+                    <div class="control-wrapper">
+                        <label>Firstname</label>
+                        <input formControlName="firstname" name="firstname" type="text">
+                        <span *ngIf="discoverers.at(i).get('firstname')!.touched &&
+                        discoverers.at(i).get('firstname')!.hasError('required')"
+                        >
+                            This field is required.
+                        </span>
+                    </div>
 
-    <div class="control-wrapper">
-        <label>Discoverer(s)</label>
-        <input formControlName="discoverer" name="discoverer" type="text">
-        <span *ngIf="astroForm.get('discoverer')!.touched && astroForm.get('discoverer')!.hasError('required')">
-            This field is required.
-        </span>
-    </div>
+                    <div class="control-wrapper">
+                        <label>Lastname <sup>*</sup> </label>
+                        <input formControlName="lastname" name="lastname" type="text">
+                        <span *ngIf="discoverers.at(i)!.get('lastname')!.touched &&
+                        discoverers.at(i).get('lastname')!.hasError('required')"
+                        >
+                            This field is required.
+                        </span>
+                    </div>
+                    <ssc-base-button (clicked)="removeDiscovererAtIndex(i)"
+                                     *ngIf="!(discoverers?.controls?.length === 1)"
+                                     icon="person_remove"
+                    ></ssc-base-button>
+                </form>
+            </ng-container>
+        </div>
+    </form>
+    <ssc-base-button (clicked)="submit()" [type]="'reset'" icon="save" label="Submit"></ssc-base-button>
 </form>
 
 
 <!--
-- Within this model we are going to choose controllers based on a previous choice:
+- Within this template we are going to choose controllers based on a previous choice:
 - the measurement type accessed by "type" variable.
 - To wrap the controller properly
 - remember to pass the parent formGroup to the variable "formGroup".

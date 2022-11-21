@@ -4,7 +4,7 @@ export interface IAstro {
     eq_diameter: IAstroMeasurement;
     albedo: IAstroMeasurement;
     av_sun_earth: IAstroMeasurement;
-    discoverer: string | string[];
+    discoverers: string | string[];
     discovery_date: string;
 }
 

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MeasurementType } from '../../interfaces/astro.interface';
 import { AstroValidators } from '../astro-table/helpers/astro.validators';
 
@@ -9,7 +9,7 @@ import { AstroValidators } from '../astro-table/helpers/astro.validators';
     styleUrls: ['astro-form.component.scss'],
     providers: [AstroValidators],
 })
-export class AstroFormComponent implements OnInit {
+export class AstroFormComponent {
     public astroMeasures = MeasurementType;
     public astroForm: FormGroup = new FormGroup({
         code: new FormControl(null, [Validators.required]),
@@ -17,11 +17,30 @@ export class AstroFormComponent implements OnInit {
         eq_diameter: this.newMeasurement(),
         albedo: this.newMeasurement(),
         av_sun_earth: this.newMeasurement(),
-        discoverer: new FormControl(null, [Validators.required]),
+        discoverers: new FormArray([
+            new FormGroup({
+                firstname: new FormControl(null, [Validators.required]),
+                lastname: new FormControl(null, [Validators.required]),
+            }),
+        ]),
         discovery_date: new FormControl(null, [Validators.required]),
     });
+    public discoverers: FormArray = this.astroForm.get('discoverers') as FormArray;
 
     constructor(private astroValidator: AstroValidators) {}
+
+    public pushNewDiscoverer() {
+        this.discoverers.push(
+            new FormGroup({
+                firstname: new FormControl(null, [Validators.required]),
+                lastname: new FormControl(null, [Validators.required]),
+            }),
+        );
+    }
+
+    public removeDiscovererAtIndex(i: number) {
+        this.discoverers.removeAt(i);
+    }
 
     public newMeasurement(): FormGroup {
         return new FormGroup<any>({
@@ -34,31 +53,7 @@ export class AstroFormComponent implements OnInit {
         });
     }
 
-    ngOnInit() {
-        console.log(this.astroForm.dirty);
-        this.astroForm.valueChanges.subscribe({
-            next: (form) => {
-                console.log(this.astroForm.dirty);
-                /*console.log('%c ==>> Validation Errors: ', 'color: red; font-weight: bold; font-size:25px;');
-				console.log(form);
-
-				let totalErrors = 0;
-
-				Object.keys(this.astroForm.controls).forEach((key) => {
-					const controlErrors: ValidationErrors | null = this.astroForm.get(key)!.errors;
-					if (controlErrors != null) {
-						totalErrors++;
-						Object.keys(controlErrors).forEach((keyError) => {
-							console.log(
-								'Key control: ' + key + ', keyError: ' + keyError + ', err value: ',
-								controlErrors[keyError],
-							);
-						});
-					}
-				});
-
-				console.log('Number of errors: ', totalErrors);*/
-            },
-        });
+    public submit() {
+        console.log(this.astroForm.value);
     }
 }

@@ -26,7 +26,7 @@ export const data: IAstros = [
                 unit: 'km',
             },
         },
-        discoverer: ['Patrizio Igino', 'Alberto Albionte'],
+        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
         discovery_date: '2022-11-01T17:41:44+00:00',
     },
     {
@@ -54,7 +54,7 @@ export const data: IAstros = [
                 unit: 'km',
             },
         },
-        discoverer: 'Patrizio Igino',
+        discoverers: 'Patrizio Igino',
         discovery_date: '2042-07-22T00:08:10.000Z',
     },
     {
@@ -84,7 +84,7 @@ export const data: IAstros = [
                 unit: 'km',
             },
         },
-        discoverer: 'Patrizio Igino Massari De Lorenzi',
+        discoverers: 'Patrizio Igino Massari De Lorenzi',
         discovery_date: '2022-07-21T23:22:00.000Z',
     },
 ];
