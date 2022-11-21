@@ -44,11 +44,10 @@ export class AstroFormComponent {
 
     public newMeasurement(): FormGroup {
         return new FormGroup<any>({
-            type: new FormControl(null, [Validators.required]),
+            type: new FormControl('', [Validators.required]),
             measurement: new FormGroup({
                 value: new FormControl(null, [Validators.required]),
                 delta: new FormControl(null, [this.astroValidator.requiredByRange]),
-                unit: new FormControl(null, []),
             }),
         });
     }

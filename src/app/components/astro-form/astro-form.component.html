@@ -1,38 +1,42 @@
 <form [formGroup]="astroForm" class="astro-form--wrapper">
-    <div class="control-wrapper">
+    <h4 class="title">General information</h4>
+    <div [ngClass]="astroForm.get('code')!.touched && astroForm.get('code')!.hasError('required') ? 'warn' : ''"
+         class="control-wrapper">
         <label>Code</label>
         <input formControlName="code" name="code" type="text">
-        <span *ngIf="astroForm.get('code')!.touched && astroForm.get('code')!.hasError('required')">
-            This field is required.
+        <span class="error">
+            This field is <b>required</b>.
         </span>
     </div>
 
-    <div class="control-wrapper">
+    <div [ngClass]="astroForm.get('discovery_date')!.touched && astroForm.get('discovery_date')!.hasError('required') ? 'warn' : ''"
+         class="control-wrapper">
         <label>Date of Discovery</label>
         <input formControlName="discovery_date" name="discovery_date" type="date">
-        <span *ngIf="astroForm.get('discovery_date')!.touched && astroForm.get('discovery_date')!.hasError('required')">
-            This field is required.
+        <span class="error">
+            This field is <b>required</b>.
         </span>
     </div>
 
-    <div class="control-wrapper">
+    <div [ngClass]="astroForm.get('name')!.touched && astroForm.get('name')!.hasError('required') ? 'warn' : ''"
+         class="control-wrapper">
         <label>Name</label>
         <input formControlName="name" name="name" type="text">
-        <span *ngIf="astroForm.get('name')!.touched && astroForm.get('name')!.hasError('required')">
-            This field is required.
+        <span class="error">
+            This field is <b>required</b>.
         </span>
     </div>
 
-    <form formGroupName="eq_diameter">
-        <div class="control-wrapper">
+    <form class="sub-group--wrapper" formGroupName="eq_diameter">
+        <h4 class="title">Eq. diameter</h4>
+
+        <div [ngClass]="astroForm.get('eq_diameter')!.touched && astroForm.get('eq_diameter')!.hasError('required') ? 'warn' : ''"
+             class="control-wrapper">
             <label>Measurement type</label>
             <select #eq_diameter formControlName="type" name="type">
                 <option value="">Choose an option...</option>
                 <option *ngFor="let type of astroMeasures | keyvalue" value="{{type.key}}">{{type.value}}</option>
             </select>
-            <span *ngIf="astroForm.get('eq_diameter')!.touched && astroForm.get('eq_diameter')!.hasError('required')">
-                This field is required.
-            </span>
         </div>
 
         <!-- The template below will be rendered according to the "eq_diameter" choice -->
@@ -42,7 +46,9 @@
         </ng-container>
     </form>
 
-    <form formGroupName="albedo">
+    <form class="sub-group--wrapper" formGroupName="albedo">
+        <h4 class="title">Albedo</h4>
+
         <div class="control-wrapper">
             <label>Measurement type</label>
             <select #albedo formControlName="type" name="type">
@@ -58,7 +64,9 @@
         </ng-container>
     </form>
 
-    <form formGroupName="av_sun_earth">
+    <form class="sub-group--wrapper" formGroupName="av_sun_earth">
+        <h4 class="title">Av. Distance from the sun</h4>
+
         <div class="control-wrapper">
             <label>Measurement type</label>
             <select #av_sun_earth formControlName="type" name="type">
@@ -74,40 +82,44 @@
         </ng-container>
     </form>
 
-    <form formArrayName="discoverers">
+    <form class="sub-group--wrapper" formArrayName="discoverers">
+        <h4 class="title">Discoverer(s)</h4>
+
+        <ssc-base-button (clicked)="pushNewDiscoverer()"
+                         class="action-button"
+                         icon="person_add"
+                         label="Add a new discoverer"
+        ></ssc-base-button>
         <div class="control-wrapper">
-            <label>Discoverer(s)</label>
-            <ssc-base-button (clicked)="pushNewDiscoverer()" icon="person_add" label="Add discoverer"></ssc-base-button>
             <ng-container *ngFor="let discoverer of discoverers?.controls; let i = index">
-                <form formGroupName="{{i}}">
-                    <div class="control-wrapper">
+                <form class="discoverer--wrapper" formGroupName="{{i}}">
+                    <div [ngClass]="discoverers.at(i).get('firstname')!.touched && discoverers.at(i).get('firstname')!.hasError('required') ? 'warn' : ''"
+                         class="control-wrapper">
                         <label>Firstname</label>
                         <input formControlName="firstname" name="firstname" type="text">
-                        <span *ngIf="discoverers.at(i).get('firstname')!.touched &&
-                        discoverers.at(i).get('firstname')!.hasError('required')"
-                        >
-                            This field is required.
+                        <span class="error">
+                            This field is <b>required</b>.
                         </span>
                     </div>
 
-                    <div class="control-wrapper">
-                        <label>Lastname <sup>*</sup> </label>
+                    <div [ngClass]="discoverers.at(i).get('lastname')!.touched && discoverers.at(i).get('lastname')!.hasError('required') ? 'warn' : ''"
+                         class="control-wrapper">
+                        <label>Lastname</label>
                         <input formControlName="lastname" name="lastname" type="text">
-                        <span *ngIf="discoverers.at(i)!.get('lastname')!.touched &&
-                        discoverers.at(i).get('lastname')!.hasError('required')"
-                        >
-                            This field is required.
+                        <span class="error">
+                            This field is <b>required</b>.
                         </span>
                     </div>
                     <ssc-base-button (clicked)="removeDiscovererAtIndex(i)"
                                      *ngIf="!(discoverers?.controls?.length === 1)"
                                      icon="person_remove"
+                                     label="Remove discoverer"
                     ></ssc-base-button>
                 </form>
             </ng-container>
         </div>
     </form>
-    <ssc-base-button (clicked)="submit()" [type]="'reset'" icon="save" label="Submit"></ssc-base-button>
+    <ssc-base-button (clicked)="submit()" icon="save" label="Submit"></ssc-base-button>
 </form>
 
 
@@ -121,47 +133,43 @@
     <ng-container formGroupName="{{formGroup}}">
         <form [ngSwitch]="type" formGroupName="measurement">
             <ng-container *ngSwitchCase="'MEAN'">
-                <div class="control-wrapper">
+                <div [ngClass]="astroForm.get(formGroup)!.get('measurement.value')!.touched && astroForm.get(formGroup)!.get('measurement.value')!.hasError('required') ? 'warn' : ''"
+                     class="control-wrapper">
                     <label>Value</label>
                     <input formControlName="value" name="value" type="text">
-                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.value')!.touched &&
-                    astroForm.get(formGroup)!.get('measurement.value')!.hasError('required')"
-                    >
-                        This field is required.
+                    <span class="error">
+                        This field is <b>required</b>.
                     </span>
                 </div>
             </ng-container>
 
             <ng-container *ngSwitchCase="'APPROXIMATION'">
-                <div class="control-wrapper">
+                <div [ngClass]="astroForm.get(formGroup)!.get('measurement.value')!.touched && astroForm.get(formGroup)!.get('measurement.value')!.hasError('required') ? 'warn' : ''"
+                     class="control-wrapper">
                     <label>Value</label>
                     <input formControlName="value" name="value" type="text">
-                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.value')!.touched &&
-                    astroForm.get(formGroup)!.get('measurement.value')!.hasError('required')"
-                    >
-                        This field is required.
+                    <span class="error">
+                        This field is <b>required</b>.
                     </span>
                 </div>
             </ng-container>
 
             <ng-container *ngSwitchCase="'RANGE'">
-                <div class="control-wrapper">
+                <div [ngClass]="astroForm.get(formGroup)!.get('measurement.value')!.touched && astroForm.get(formGroup)!.get('measurement.value')!.hasError('required') ? 'warn' : ''"
+                     class="control-wrapper">
                     <label>Value</label>
                     <input formControlName="value" name="value" type="text">
-                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.value')!.touched &&
-                    astroForm.get(formGroup)!.get('measurement.value')!.hasError('required')"
-                    >
-                        This field is required.
+                    <span class="error">
+                        This field is <b>required</b>.
                     </span>
                 </div>
 
-                <div class="control-wrapper">
+                <div [ngClass]="astroForm.get(formGroup)!.get('measurement.delta')!.touched && astroForm.get(formGroup)!.get('measurement.delta')!.hasError('required') ? 'warn' : ''"
+                     class="control-wrapper">
                     <label>Delta</label>
                     <input formControlName="delta" name="delta" type="text">
-                    <span *ngIf="astroForm.get(formGroup)!.get('measurement.delta')!.touched &&
-                    astroForm.get(formGroup)!.get('measurement.delta')!.hasError('required')"
-                    >
-                        This field is required.
+                    <span class="error">
+                        This field is <b>required</b>.
                     </span>
                 </div>
             </ng-container>
