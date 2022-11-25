@@ -10,12 +10,15 @@ import { AstroFormComponent } from './components/astro-form/astro-form.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { MeasurementRenderPipe } from './pipes/measurementRender.pipe';
 import { BaseButtonComponent } from './components/base-button/base-button.component';
+import { TablePageComponent } from './pages/table-page/table-page.component';
+import { FormPageComponent } from './pages/form-page/form-page.component';
 
 const PIPES = [ConcatPipe, MeasurementRenderPipe];
+const PAGES = [TablePageComponent, FormPageComponent];
 const COMPONENTS = [HeaderComponent, AstroTableComponent, AstroFormComponent, BaseButtonComponent];
 
 @NgModule({
-    declarations: [AppComponent, ...COMPONENTS, ...PIPES],
+    declarations: [AppComponent, ...PAGES, ...COMPONENTS, ...PIPES],
     imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],

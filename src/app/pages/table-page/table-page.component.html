@@ -1,0 +1,9 @@
+<ng-container *ngIf="astro$ | async">
+    <div class="title--wrapper">
+        <div class="title">
+            <h2>Have you find a new object?</h2>
+            <a [routerLink]="'new-object'">Tell us!</a>
+        </div>
+    </div>
+    <ssc-astro-table [astro$]="astro$"></ssc-astro-table>
+</ng-container>

@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MeasurementType } from '../../interfaces/astro.interface';
+import { IAstro, MeasurementType } from '../../interfaces/astro.interface';
 import { AstroValidators } from '../astro-table/helpers/astro.validators';
 
 @Component({
     selector: 'ssc-astro-form',
     templateUrl: 'astro-form.component.html',
     styleUrls: ['astro-form.component.scss'],
-    providers: [AstroValidators],
 })
 export class AstroFormComponent {
+    @Output() submitted: EventEmitter<IAstro> = new EventEmitter<IAstro>();
+
     public astroMeasures = MeasurementType;
     public astroForm: FormGroup = new FormGroup({
         code: new FormControl(null, [Validators.required]),
@@ -27,9 +28,7 @@ export class AstroFormComponent {
     });
     public discoverers: FormArray = this.astroForm.get('discoverers') as FormArray;
 
-    constructor(private astroValidator: AstroValidators) {}
-
-    public pushNewDiscoverer() {
+    public pushNewDiscoverer(): void {
         this.discoverers.push(
             new FormGroup({
                 firstname: new FormControl(null, [Validators.required]),
@@ -38,7 +37,7 @@ export class AstroFormComponent {
         );
     }
 
-    public removeDiscovererAtIndex(i: number) {
+    public removeDiscovererAtIndex(i: number): void {
         this.discoverers.removeAt(i);
     }
 
@@ -47,12 +46,21 @@ export class AstroFormComponent {
             type: new FormControl('', [Validators.required]),
             measurement: new FormGroup({
                 value: new FormControl(null, [Validators.required]),
-                delta: new FormControl(null, [this.astroValidator.requiredByRange]),
+                delta: new FormControl(null, [AstroValidators.requiredByRange]),
             }),
         });
     }
 
-    public submit() {
-        console.log(this.astroForm.value);
+    public submit(): void {
+        const discoverers = this.astroForm
+            .get('discoverers')
+            ?.value.map(
+                ({ firstname, lastname }: { firstname: string; lastname: string }): string =>
+                    `${firstname} ${lastname}`,
+            );
+        const payload = Object.assign(this.astroForm.value, { discoverers: discoverers });
+
+        this.submitted.emit(payload);
+        this.astroForm.reset();
     }
 }
