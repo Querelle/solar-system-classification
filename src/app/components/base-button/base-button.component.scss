@@ -1,10 +1,12 @@
+@import "src/common";
+
 .my-btn {
   display: flex;
   align-items: center;
   gap: 8px;
   justify-content: center;
   padding: 8px 12px;
-  background-color: #3F37C9;
+  background-color: $dark-blue;
   border-radius: 5px;
   font-weight: bolder;
   color: #FFFFFF;
@@ -21,7 +23,7 @@
   }
 
   &:hover {
-    background-color: #4361EE;
+    background-color: $blue;
     color: #FFFFFF;
 
     &:not(.disabled) > .scale {

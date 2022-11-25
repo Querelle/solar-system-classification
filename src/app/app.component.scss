@@ -15,7 +15,7 @@
 
     .my-ssc-app-header--title {
       margin-left: 32px;
-      font-size: 1.8rem;
+      font-size: 1.3rem;
     }
   }
 
@@ -48,6 +48,14 @@
       h4 {
         margin: 0;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .my-ssc-app--header {
+    .my-ssc-app-header--title {
+      font-size: 1.8rem !important;
     }
   }
 }

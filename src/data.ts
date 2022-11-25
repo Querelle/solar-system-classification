@@ -2,519 +2,114 @@ import { IAstros, MeasurementType } from './app/interfaces/astro.interface';
 
 export const data: IAstros = [
     {
-        code: 8965,
-        name: 'Pluto',
+        code: 134340,
+        name: 'Plutone',
         eq_diameter: {
             type: MeasurementType.RANGE,
             measurement: {
-                value: 45453,
-                delta: 45,
+                value: 2306,
+                delta: 20,
+                unit: 'km',
+            },
+        },
+        albedo: {
+            type: MeasurementType.MEAN,
+            measurement: {
+                value: 0.575,
+                unit: '',
+            },
+        },
+        av_sun_earth: {
+            type: MeasurementType.MEAN,
+            measurement: {
+                value: 39.4,
+                unit: 'ua',
+            },
+        },
+        discoverers: ['Clyde Tombaugh'],
+        discovery_date: '1930-01-01T00:00:00+00:00',
+    },
+    {
+        code: 136472,
+        name: 'Makemake',
+        eq_diameter: {
+            type: MeasurementType.RANGE,
+            measurement: {
+                value: 1800,
+                delta: 20,
+                unit: 'km',
+            },
+        },
+        albedo: {
+            type: MeasurementType.RANGE,
+            measurement: {
+                value: 0.8,
+                delta: 0.2,
+                unit: '',
+            },
+        },
+        av_sun_earth: {
+            type: MeasurementType.MEAN,
+            measurement: {
+                value: 45.7,
+                unit: 'au',
+            },
+        },
+        discoverers: ['C. Trujillo', 'M. Brown', 'D. Rabinowitz'],
+        discovery_date: '2005-01-01T00:00:00+00:00',
+    },
+    {
+        code: 136108,
+        name: 'Haumea',
+        eq_diameter: {
+            type: MeasurementType.APPROXIMATION,
+            measurement: {
+                value: 1500,
                 unit: 'km',
             },
         },
         albedo: {
             type: MeasurementType.APPROXIMATION,
             measurement: {
-                value: 90700,
-                unit: 'km',
+                value: 0.6,
+                unit: '',
             },
         },
         av_sun_earth: {
             type: MeasurementType.MEAN,
             measurement: {
-                value: 9985,
-                unit: 'km',
+                value: 43.3,
+                unit: 'ua',
             },
         },
-        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
-        discovery_date: '2022-11-01T17:41:44+00:00',
+        discoverers: ['C. Trujillo', 'M. Brown', 'D. Rabinowitz'],
+        discovery_date: '2005-01-01T00:00:00+00:00',
     },
     {
-        code: 86532,
-        name: 'Mars',
+        code: 90482,
+        name: 'Orcus',
         eq_diameter: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 8000,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 790000,
-                delta: 236,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
             type: MeasurementType.APPROXIMATION,
             measurement: {
-                value: 955.89,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino',
-        discovery_date: '2042-07-22T00:08:10.000Z',
-    },
-    {
-        code: 86532,
-        name: 'Venus',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 6000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 5300,
-                delta: 10,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 78000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino Massari De Lorenzi',
-        discovery_date: '2022-07-21T23:22:00.000Z',
-    },
-    {
-        code: 8965,
-        name: 'Pluto',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 45453,
-                delta: 45,
+                value: 1500,
                 unit: 'km',
             },
         },
         albedo: {
             type: MeasurementType.APPROXIMATION,
             measurement: {
-                value: 90700,
-                unit: 'km',
+                value: 0.1,
+                unit: '',
             },
         },
         av_sun_earth: {
             type: MeasurementType.MEAN,
             measurement: {
-                value: 9985,
+                value: 39.4,
                 unit: 'km',
             },
         },
-        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
-        discovery_date: '2022-11-01T17:41:44+00:00',
-    },
-    {
-        code: 86532,
-        name: 'Mars',
-        eq_diameter: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 8000,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 790000,
-                delta: 236,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 955.89,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino',
-        discovery_date: '2042-07-22T00:08:10.000Z',
-    },
-    {
-        code: 86532,
-        name: 'Venus',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 6000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 5300,
-                delta: 10,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 78000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino Massari De Lorenzi',
-        discovery_date: '2022-07-21T23:22:00.000Z',
-    },
-    {
-        code: 8965,
-        name: 'Pluto',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 45453,
-                delta: 45,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 90700,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 9985,
-                unit: 'km',
-            },
-        },
-        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
-        discovery_date: '2022-11-01T17:41:44+00:00',
-    },
-    {
-        code: 86532,
-        name: 'Mars',
-        eq_diameter: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 8000,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 790000,
-                delta: 236,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 955.89,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino',
-        discovery_date: '2042-07-22T00:08:10.000Z',
-    },
-    {
-        code: 86532,
-        name: 'Venus',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 6000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 5300,
-                delta: 10,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 78000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino Massari De Lorenzi',
-        discovery_date: '2022-07-21T23:22:00.000Z',
-    },
-    {
-        code: 8965,
-        name: 'Pluto',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 45453,
-                delta: 45,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 90700,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 9985,
-                unit: 'km',
-            },
-        },
-        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
-        discovery_date: '2022-11-01T17:41:44+00:00',
-    },
-    {
-        code: 86532,
-        name: 'Mars',
-        eq_diameter: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 8000,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 790000,
-                delta: 236,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 955.89,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino',
-        discovery_date: '2042-07-22T00:08:10.000Z',
-    },
-    {
-        code: 86532,
-        name: 'Venus',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 6000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 5300,
-                delta: 10,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 78000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino Massari De Lorenzi',
-        discovery_date: '2022-07-21T23:22:00.000Z',
-    },
-    {
-        code: 8965,
-        name: 'Pluto',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 45453,
-                delta: 45,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 90700,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 9985,
-                unit: 'km',
-            },
-        },
-        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
-        discovery_date: '2022-11-01T17:41:44+00:00',
-    },
-    {
-        code: 86532,
-        name: 'Mars',
-        eq_diameter: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 8000,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 790000,
-                delta: 236,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 955.89,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino',
-        discovery_date: '2042-07-22T00:08:10.000Z',
-    },
-    {
-        code: 86532,
-        name: 'Venus',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 6000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 5300,
-                delta: 10,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 78000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino Massari De Lorenzi',
-        discovery_date: '2022-07-21T23:22:00.000Z',
-    },
-    {
-        code: 8965,
-        name: 'Pluto',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 45453,
-                delta: 45,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 90700,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 9985,
-                unit: 'km',
-            },
-        },
-        discoverers: ['Patrizio Igino', 'Alberto Albionte'],
-        discovery_date: '2022-11-01T17:41:44+00:00',
-    },
-    {
-        code: 86532,
-        name: 'Mars',
-        eq_diameter: {
-            type: MeasurementType.MEAN,
-            measurement: {
-                value: 8000,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 790000,
-                delta: 236,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.APPROXIMATION,
-            measurement: {
-                value: 955.89,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino',
-        discovery_date: '2042-07-22T00:08:10.000Z',
-    },
-    {
-        code: 86532,
-        name: 'Venus',
-        eq_diameter: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 6000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        albedo: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 5300,
-                delta: 10,
-                unit: 'km',
-            },
-        },
-        av_sun_earth: {
-            type: MeasurementType.RANGE,
-            measurement: {
-                value: 78000,
-                delta: 100,
-                unit: 'km',
-            },
-        },
-        discoverers: 'Patrizio Igino Massari De Lorenzi',
-        discovery_date: '2022-07-21T23:22:00.000Z',
+        discoverers: ['C. Trujillo', 'M. Brown', 'D. Rabinowitz'],
+        discovery_date: '2004-01-01T00:00:00+00:00',
     },
 ];

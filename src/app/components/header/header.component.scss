@@ -1,10 +1,12 @@
+@import "src/common";
+
 .my-header--container {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   padding: 32px 16px;
-  background-color: #3A0CA3;
+  background-color: $dark-blue;
   color: #FFFFFF;
   height: 100%;
   flex-basis: 100%;
