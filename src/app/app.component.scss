@@ -20,9 +20,34 @@
   }
 
   .my-ssc-app--main {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 32px 16px;
     height: 92vh;
     overflow: auto;
+
+    & > * {
+      width: 100%;
+    }
+
+    .title--wrapper {
+      margin-bottom: 32px;
+      text-align: center;
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        h2 {
+          margin: 10px 0;
+        }
+      }
+
+      h4 {
+        margin: 0;
+      }
+    }
   }
 }

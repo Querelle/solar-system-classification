@@ -1,3 +1,63 @@
-th, td {
-  padding: 10px 15px;
+table {
+  box-shadow: unset;
+
+  th, td {
+    padding: 10px 15px;
+    text-align: left;
+  }
+
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    &::after {
+      display: block;
+      content: ' ';
+      background-color: #FFFFFF;
+      height: 1rem;
+    }
+
+    td {
+      display: flex;
+      background-color: #aacaef;
+      border: 1px solid #FFFFFF;
+
+      &::before {
+        content: attr(aria-label);
+        font-weight: bold;
+        width: 120px;
+        min-width: 120px;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 800px) {
+  table {
+    box-shadow: -3px 3px 11px 1px #aacaef;
+
+    thead {
+      display: contents;
+    }
+
+    tr {
+      &::after {
+        display: table-row;
+        content: unset;
+      }
+
+      td {
+        display: table-cell;
+        border: unset;
+        background-color: unset;
+
+        &::before {
+          content: unset;
+        }
+      }
+    }
+  }
 }

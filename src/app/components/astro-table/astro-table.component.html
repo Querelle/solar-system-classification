@@ -28,14 +28,14 @@
 -->
 <ng-template #tableRow let-astro="astro">
     <tr>
-        <td>{{astro.code}}</td>
-        <td>{{astro.name}}</td>
-        <td>{{astro.eq_diameter | measurementRender}}</td>
-        <td>{{astro.albedo | measurementRender}}</td>
-        <td>{{astro.av_sun_earth | measurementRender}}</td>
-        <td>
+        <td aria-label="#code">{{astro.code}}</td>
+        <td aria-label="Name">{{astro.name}}</td>
+        <td aria-label="Eq. diameter (km)">{{astro.eq_diameter | measurementRender}}</td>
+        <td aria-label="Albedo">{{astro.albedo | measurementRender}}</td>
+        <td aria-label="Av. distance from the sun (au)">{{astro.av_sun_earth | measurementRender}}</td>
+        <td aria-label="Discoverer(s)">
             {{astro.discoverers | concatPipe}}
         </td>
-        <td>{{astro.discovery_date | date: 'dd/MM/YYYY'}}</td>
+        <td aria-label="Date of discovery">{{astro.discovery_date | date: 'dd/MM/YYYY'}}</td>
     </tr>
 </ng-template>

@@ -6,7 +6,7 @@ import { AstroService } from '../../services/astro.service';
 @Component({
     selector: 'ssc-table-page',
     templateUrl: 'table-page.component.html',
-    styleUrls: [],
+    styleUrls: ['table-page.component.scss'],
 })
 export class TablePageComponent {
     public astro$: Observable<IAstros> = this.astroService.astro();

@@ -12,10 +12,11 @@ import { MeasurementRenderPipe } from './pipes/measurementRender.pipe';
 import { BaseButtonComponent } from './components/base-button/base-button.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { FormPageComponent } from './pages/form-page/form-page.component';
+import { BasicLinkComponent } from './components/basic-link/basic-link.component';
 
 const PIPES = [ConcatPipe, MeasurementRenderPipe];
 const PAGES = [TablePageComponent, FormPageComponent];
-const COMPONENTS = [HeaderComponent, AstroTableComponent, AstroFormComponent, BaseButtonComponent];
+const COMPONENTS = [HeaderComponent, AstroTableComponent, AstroFormComponent, BaseButtonComponent, BasicLinkComponent];
 
 @NgModule({
     declarations: [AppComponent, ...PAGES, ...COMPONENTS, ...PIPES],

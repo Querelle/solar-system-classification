@@ -1,13 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
 .astro-form--wrapper {
+  width: 100%;
+
   .sub-group--wrapper {
     margin: 26px 0;
+  }
+
+  .discoverer--wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 34px;
   }
 
   .control-wrapper {
     display: flex;
     width: 100%;
     flex-direction: column;
-    margin: 8px 0;
+    margin: 12px 0;
+    position: relative;
 
     label {
       font-size: 0.8rem;
@@ -16,16 +33,10 @@
     input,
     select {
       width: 100%;
-      background-color: #f5f5f5;
+      background-color: #f8f7f7;
       border: 1px solid #abaaaa;
       border-radius: 4px;
       padding: 10px 12px;
-    }
-
-    .discoverer--wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
     }
 
     &.warn {
@@ -44,6 +55,8 @@
 
       .error {
         display: inline;
+        position: absolute;
+        bottom: -18px;
       }
     }
 
@@ -52,5 +65,50 @@
       color: #ff003b;
       font-size: 0.8rem;
     }
+  }
+
+  .action--container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .astro-form--wrapper {
+    width: 80%;
+
+    .discoverer--wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      align-items: flex-end;
+      margin-bottom: 0;
+
+      .button--container {
+        padding: 8px 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .astro-form--wrapper {
+    width: 935px;
+
+    .astro-form-section--inputs {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+
+      .fixed-width {
+        width: 100% !important;
+      }
+
+      .fixed-width {
+        max-width: 303px !important;
+      }
+    }
+
   }
 }
