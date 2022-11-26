@@ -40,11 +40,26 @@
                     </select>
                 </div>
 
-                <!-- The template below will be rendered according to the "eq_diameter" choice -->
-                <ng-container [ngTemplateOutletContext]="{type: eq_diameter.value, formGroup: 'eq_diameter'}"
-                              [ngTemplateOutlet]="measurement"
-                >
-                </ng-container>
+                <form class="astro-form-section--inputs" formGroupName="measurement">
+                    <div [ngClass]="astroForm.get('eq_diameter.measurement.value')!.touched &&
+                        astroForm.get('eq_diameter.measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
+                         class="control-wrapper fixed-width">
+                        <label>Value</label>
+                        <input formControlName="value" name="value" type="text">
+                        <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                    </div>
+
+                    <ng-container *ngIf="eq_diameter.value === 'RANGE'">
+                        <div [ngClass]="astroForm.get('eq_diameter.measurement.delta')!.touched &&
+                        astroForm.get('eq_diameter.measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
+                             class="control-wrapper fixed-width">
+                            <label>Delta</label>
+                            <input formControlName="delta" name="delta" type="text">
+                            <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                        </div>
+                    </ng-container>
+                </form>
+
             </div>
         </form>
 
@@ -54,18 +69,33 @@
             <div class="astro-form-section--inputs">
                 <div class="control-wrapper fixed-width">
                     <label>Measurement type</label>
-                    <select #albedo (selectionchange)="changed('albedo')" formControlName="type" name="type">
+                    <select #albedo (change)="changed('albedo')" formControlName="type" name="type">
                         <option value="">Choose an option...</option>
                         <option *ngFor="let type of astroMeasures | keyvalue"
                                 value="{{type.key}}">{{type.value}}</option>
                     </select>
                 </div>
 
-                <!-- The template below will be rendered according to the "albedo" choice -->
-                <ng-container [ngTemplateOutletContext]="{type: albedo.value, formGroup: 'albedo'}"
-                              [ngTemplateOutlet]="measurement"
-                >
-                </ng-container>
+                <form class="astro-form-section--inputs" formGroupName="measurement">
+                    <div [ngClass]="astroForm.get('albedo.measurement.value')!.touched &&
+                        astroForm.get('albedo.measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
+                         class="control-wrapper fixed-width">
+                        <label>Value</label>
+                        <input formControlName="value" name="value" type="text">
+                        <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                    </div>
+
+                    <ng-container *ngIf="albedo.value === 'RANGE'">
+                        <div [ngClass]="astroForm.get('albedo.measurement.delta')!.touched &&
+                        astroForm.get('albedo.measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
+                             class="control-wrapper fixed-width">
+                            <label>Delta</label>
+                            <input formControlName="delta" name="delta" type="text">
+                            <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                        </div>
+                    </ng-container>
+                </form>
+
             </div>
         </form>
 
@@ -75,7 +105,7 @@
             <div class="astro-form-section--inputs">
                 <div class="control-wrapper fixed-width">
                     <label>Measurement type</label>
-                    <select #av_sun_earth (selectionchange)="changed('av_sun_earth')" formControlName="type"
+                    <select #av_sun_earth (change)="changed('av_sun_earth')" formControlName="type"
                             name="type">
                         <option value="">Choose an option...</option>
                         <option *ngFor="let type of astroMeasures | keyvalue"
@@ -83,11 +113,25 @@
                     </select>
                 </div>
 
-                <!-- The template below will be rendered according to the "av_sun_earth" choice -->
-                <ng-container [ngTemplateOutletContext]="{type: av_sun_earth.value, formGroup: 'av_sun_earth'}"
-                              [ngTemplateOutlet]="measurement"
-                >
-                </ng-container>
+                <form class="astro-form-section--inputs" formGroupName="measurement">
+                    <div [ngClass]="astroForm.get('av_sun_earth.measurement.value')!.touched &&
+                        astroForm.get('av_sun_earth.measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
+                         class="control-wrapper fixed-width">
+                        <label>Value</label>
+                        <input formControlName="value" name="value" type="text">
+                        <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                    </div>
+
+                    <ng-container *ngIf="av_sun_earth.value === 'RANGE'">
+                        <div [ngClass]="astroForm.get('av_sun_earth.measurement.delta')!.touched &&
+                        astroForm.get('av_sun_earth.measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
+                             class="control-wrapper fixed-width">
+                            <label>Delta</label>
+                            <input formControlName="delta" name="delta" type="text">
+                            <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                        </div>
+                    </ng-container>
+                </form>
             </div>
         </form>
 
@@ -123,8 +167,7 @@
             </ng-container>
         </form>
         <div class="action--container">
-            {{(invalidForm | async)!}}
-            <ssc-base-button (clicked)="submit()" [disabled_btn]="(invalidForm | async)!"
+            <ssc-base-button (clicked)="submit()" [disabled_btn]="astroForm.invalid"
                              icon="save"
                              label="Submit"></ssc-base-button>
             <span>or </span>
@@ -132,56 +175,3 @@
         </div>
     </form>
 </div>
-
-
-<!--
-- Within this template we are going to choose controllers based on a previous choice:
-- the measurement type accessed by "type" variable.
-- To wrap the controller properly
-- remember to pass the parent formGroup to the variable "formGroup".
--->
-<ng-template #measurement [formGroup]="astroForm" let-formGroup="formGroup" let-type="type">
-    <ng-container formGroupName="{{formGroup}}">
-        <form [ngSwitch]="type" class="astro-form-section--inputs" formGroupName="measurement">
-            <ng-container *ngSwitchCase="'MEAN'">
-                <div [ngClass]="astroForm.get(formGroup)?.get('measurement.value')!.touched &&
-                        astroForm.get(formGroup)?.get('measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Value</label>
-                    <input formControlName="value" name="value" type="text">
-                    <span class="error">This field must be a <b>proper number different from 0</b>.</span>
-                </div>
-            </ng-container>
-
-            <ng-container *ngSwitchCase="'APPROXIMATION'">
-                <div [ngClass]="astroForm.get(formGroup)?.get('measurement.value')!.touched &&
-                       astroForm.get(formGroup)?.get('measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Value</label>
-                    <input formControlName="value" name="value" type="text">
-                    <span class="error">This field must be a <b>proper number different from 0</b>.</span>
-                </div>
-            </ng-container>
-
-            <ng-container *ngSwitchCase="'RANGE'">
-                <div [ngClass]="astroForm.get(formGroup)?.get('measurement.value')!.touched &&
-                        astroForm.get(formGroup)?.get('measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Value</label>
-                    <input formControlName="value" name="value" type="text">
-                    <span class="error">This field must be a <b>proper number different from 0</b>.</span>
-                </div>
-
-                <div [ngClass]="astroForm.get(formGroup)?.get('measurement.delta')!.touched &&
-                        astroForm.get(formGroup)?.get('measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Delta</label>
-                    <input formControlName="delta" name="delta" type="text">
-                    <span class="error">This field must be a <b>proper number different from 0</b>.</span>
-                </div>
-            </ng-container>
-
-            <ng-container *ngSwitchDefault></ng-container>
-        </form>
-    </ng-container>
-</ng-template>

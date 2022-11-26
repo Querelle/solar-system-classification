@@ -2,7 +2,6 @@ import { AfterContentChecked, Component, EventEmitter, Output } from '@angular/c
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IAstro, MeasurementType } from '../../interfaces/astro.interface';
 import { AstroValidators } from './helpers/astro.validators';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'ssc-astro-form',
@@ -28,7 +27,6 @@ export class AstroFormComponent implements AfterContentChecked {
         discovery_date: new FormControl(null, [Validators.required]),
     });
     public discoverers: FormArray = this.astroForm.get('discoverers') as FormArray;
-    public invalidForm: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
     public pushNewDiscoverer(): void {
         this.discoverers.push(
@@ -48,13 +46,13 @@ export class AstroFormComponent implements AfterContentChecked {
             type: new FormControl('', [Validators.required]),
             measurement: new FormGroup({
                 value: new FormControl(null, [Validators.required, AstroValidators.isNumber]),
-                delta: new FormControl(null, [AstroValidators.requiredByRange]),
+                delta: new FormControl(null, []),
             }),
         });
     }
 
     public changed(node: string): void {
-        this.astroForm.get(node)?.get('measurement');
+        this.astroForm.get(`${node}.measurement`)?.reset();
     }
 
     public submit(): void {
@@ -71,6 +69,18 @@ export class AstroFormComponent implements AfterContentChecked {
     }
 
     ngAfterContentChecked() {
-        this.invalidForm.next(this.astroForm.invalid);
+        console.log(this.astroForm.get('av_sun_earth.measurement.type')?.value);
+        if (this.astroForm.get('eq_diameter.type')?.value === 'RANGE') {
+            this.astroForm.get('eq_diameter.measurement.delta')?.setValidators([AstroValidators.isNumber]);
+            this.astroForm.get('eq_diameter.measurement.delta')?.updateValueAndValidity();
+        }
+        if (this.astroForm.get('albedo.type')?.value === 'RANGE') {
+            this.astroForm.get('albedo.measurement.delta')?.setValidators([AstroValidators.isNumber]);
+            this.astroForm.get('albedo.measurement.delta')?.updateValueAndValidity();
+        }
+        if (this.astroForm.get('av_sun_earth.type')?.value === 'RANGE') {
+            this.astroForm.get('av_sun_earth.measurement.delta')?.setValidators([AstroValidators.isNumber]);
+            this.astroForm.get('av_sun_earth.measurement.delta')?.updateValueAndValidity();
+        }
     }
 }
