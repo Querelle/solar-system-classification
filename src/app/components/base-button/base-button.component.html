@@ -3,6 +3,7 @@
         [ngClass]="disabled_btn? 'disabled my-btn' : 'my-btn'"
         [type]="type"
 >
+    {{disabled_btn}}
     <span *ngIf="!!icon" class="material-symbols-outlined scale">{{icon}}</span>
     <span *ngIf="!!label">{{label}}</span>
 </button>

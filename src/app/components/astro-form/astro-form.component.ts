@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterContentChecked, Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IAstro, MeasurementType } from '../../interfaces/astro.interface';
-import { AstroValidators } from '../astro-table/helpers/astro.validators';
+import { AstroValidators } from './helpers/astro.validators';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
     selector: 'ssc-astro-form',
     templateUrl: 'astro-form.component.html',
     styleUrls: ['astro-form.component.scss'],
 })
-export class AstroFormComponent {
+export class AstroFormComponent implements AfterContentChecked {
     @Output() submitted: EventEmitter<IAstro> = new EventEmitter<IAstro>();
 
     public astroMeasures = MeasurementType;
@@ -27,6 +28,7 @@ export class AstroFormComponent {
         discovery_date: new FormControl(null, [Validators.required]),
     });
     public discoverers: FormArray = this.astroForm.get('discoverers') as FormArray;
+    public invalidForm: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
     public pushNewDiscoverer(): void {
         this.discoverers.push(
@@ -45,10 +47,14 @@ export class AstroFormComponent {
         return new FormGroup<any>({
             type: new FormControl('', [Validators.required]),
             measurement: new FormGroup({
-                value: new FormControl(null, [Validators.required]),
+                value: new FormControl(null, [Validators.required, AstroValidators.isNumber]),
                 delta: new FormControl(null, [AstroValidators.requiredByRange]),
             }),
         });
+    }
+
+    public changed(node: string): void {
+        this.astroForm.get(node)?.get('measurement');
     }
 
     public submit(): void {
@@ -62,5 +68,9 @@ export class AstroFormComponent {
 
         this.submitted.emit(payload);
         this.astroForm.reset();
+    }
+
+    ngAfterContentChecked() {
+        this.invalidForm.next(this.astroForm.invalid);
     }
 }
