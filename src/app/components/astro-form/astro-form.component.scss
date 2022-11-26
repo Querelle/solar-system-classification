@@ -1,3 +1,5 @@
+@import "src/common";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,10 @@
 
 .astro-form--wrapper {
   width: 100%;
+
+  h4 {
+    margin: 2px;
+  }
 
   .sub-group--wrapper {
     margin: 26px 0;
@@ -33,7 +39,7 @@
     input,
     select {
       width: 100%;
-      background-color: #f8f7f7;
+      background-color: $bg-contrast;
       border: 1px solid #abaaaa;
       border-radius: 4px;
       padding: 10px 12px;
@@ -41,15 +47,15 @@
 
     &.warn {
       label {
-        color: #ff003b;
+        color: $warn;
       }
 
       input,
       select {
-        border: 1px solid #ff003b;
+        border: 1px solid $warn;
 
         &:focus-visible {
-          border: 1px solid #ff003b;
+          border: 1px solid $warn;
         }
       }
 
@@ -71,6 +77,11 @@
     display: flex;
     align-items: center;
     gap: 16px;
+  }
+
+  .required {
+    color: $warn;
+    font-size: 1rem;
   }
 }
 

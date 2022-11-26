@@ -56,20 +56,20 @@ export class AstroFormComponent implements AfterContentChecked {
     }
 
     public submit(): void {
-        const discoverers = this.astroForm
-            .get('discoverers')
-            ?.value.map(
-                ({ firstname, lastname }: { firstname: string; lastname: string }): string =>
-                    `${firstname} ${lastname}`,
-            );
-        const payload = Object.assign(this.astroForm.value, { discoverers: discoverers });
+        const date = new Date(this.astroForm.get('discovery_date')?.value);
+        const discoverers = this.discoverers?.value.map(
+            ({ firstname, lastname }: { firstname: string; lastname: string }): string => `${firstname} ${lastname}`,
+        );
+        const payload = Object.assign(this.astroForm.value, {
+            discoverers: discoverers,
+            discovery_date: date.toISOString(),
+        });
 
         this.submitted.emit(payload);
         this.astroForm.reset();
     }
 
     ngAfterContentChecked() {
-        console.log(this.astroForm.get('av_sun_earth.measurement.type')?.value);
         if (this.astroForm.get('eq_diameter.type')?.value === 'RANGE') {
             this.astroForm.get('eq_diameter.measurement.delta')?.setValidators([AstroValidators.isNumber]);
             this.astroForm.get('eq_diameter.measurement.delta')?.updateValueAndValidity();

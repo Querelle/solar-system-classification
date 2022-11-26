@@ -5,3 +5,29 @@
   align-content: center;
 }
 
+.title--wrapper {
+  margin-bottom: 32px;
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-content: center;
+    align-items: center;
+
+    h2, h3 {
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .title--wrapper {
+    .title {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}
+

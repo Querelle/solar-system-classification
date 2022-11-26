@@ -1,3 +1,5 @@
+@import "src/common";
+
 table {
   box-shadow: unset;
 
@@ -21,7 +23,7 @@ table {
 
     td {
       display: flex;
-      background-color: #aacaef;
+      background-color: $bg-contrast;
       border: 1px solid #FFFFFF;
 
       &::before {
