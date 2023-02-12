@@ -26,8 +26,13 @@ export class AstroFormComponent {
         ]),
         discovery_date: new FormControl(null, [Validators.required]),
     });
+
+    /*
+     * FormArray that the HTML template loops to show discoverers fields (first and last name) */
     public discoverers: FormArray = this.astroForm.get('discoverers') as FormArray;
 
+    /*
+     * Template calls this method to push a new FormControl inside discoverers FormArray */
     public pushNewDiscoverer(): void {
         this.discoverers.push(
             new FormGroup({
@@ -37,10 +42,14 @@ export class AstroFormComponent {
         );
     }
 
+    /*
+     * Template calls this method to remove a new FormControl from discoverers FormArray */
     public removeDiscovererAtIndex(i: number): void {
         this.discoverers.removeAt(i);
     }
 
+    /*
+     * Return a new FormGroup inside parent form */
     public newMeasurement(): FormGroup {
         return new FormGroup<any>({
             type: new FormControl('', [Validators.required]),
@@ -51,6 +60,8 @@ export class AstroFormComponent {
         });
     }
 
+    /*
+     * Each time a measurement select changes its value, it resets Validators */
     public changed(node: string): void {
         let nodeRef = this.astroForm.get(`${node}`);
         nodeRef?.get(`measurement`)?.reset();

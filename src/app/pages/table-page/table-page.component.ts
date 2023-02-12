@@ -12,7 +12,7 @@ import { FormDialogComponent } from '../form-dialog/form-dialog.component';
     providers: [DialogService],
 })
 export class TablePageComponent {
-    public astro$: Observable<IAstros> = this.astroService.astro();
+    public astro$: Observable<IAstros> = this.astroService.astro$;
 
     constructor(private astroService: AstroService, private dialog: DialogService) {}
 

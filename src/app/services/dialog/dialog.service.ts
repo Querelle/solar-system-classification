@@ -34,7 +34,7 @@ export class DialogService {
             .pipe(
                 tap({
                     next: () => containerRef.destroy(),
-                    complete: () => console.log('Dialog closed: operation complete!'),
+                    complete: () => console.log('Dialog closed: observable complete!'),
                 }),
             )
             .subscribe();

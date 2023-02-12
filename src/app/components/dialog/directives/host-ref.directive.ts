@@ -1,8 +1,9 @@
-import { Directive, Inject, ViewContainerRef } from '@angular/core';
+import { Directive, Inject, Injectable, ViewContainerRef } from '@angular/core';
 
-export class PrivateDialogService {
-    createListeners: any[] = [];
-    destroyListeners: any[] = [];
+@Injectable()
+export class DialogContainerService {
+    private createListeners: ((a: ViewContainerRef) => void)[] = [];
+    private destroyListeners: ((a: ViewContainerRef) => void)[] = [];
 
     onContainerCreated(fn: (a: ViewContainerRef) => void) {
         this.createListeners.push(fn);
@@ -29,7 +30,7 @@ export class PrivateDialogService {
     selector: '[sscHostWrapper]',
 })
 export class HostRefDirective {
-    constructor(public containerViewRef: ViewContainerRef, @Inject('ssc-private-dialog-service') private shared: any) {
+    constructor(public containerViewRef: ViewContainerRef, @Inject('dialog-container-service') private shared: any) {
         shared.registerContainer(containerViewRef);
     }
 }

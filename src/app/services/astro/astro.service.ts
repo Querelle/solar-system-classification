@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscriber } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { data } from '../../../data';
 import { IAstro, IAstros } from '@app/interfaces/astro.interface';
 
@@ -9,14 +9,13 @@ import { IAstro, IAstros } from '@app/interfaces/astro.interface';
 })
 export class AstroService {
     private astros: IAstros = data;
+    private astros$$: BehaviorSubject<IAstros> = new BehaviorSubject<IAstros>(data);
+    public astro$: Observable<IAstros> = this.astros$$.asObservable();
 
     constructor(private http: HttpClient) {}
 
-    public astro(): Observable<IAstros> {
-        return new Observable<IAstros>((subscriber: Subscriber<IAstros>) => subscriber.next(this.astros));
-    }
-
     public newAstro(astro: IAstro) {
         this.astros.push(astro);
+        this.astros$$.next(this.astros);
     }
 }

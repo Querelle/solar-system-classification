@@ -1,5 +1,5 @@
 import { Component, Inject, ViewChild, ViewContainerRef } from '@angular/core';
-import { HostRefDirective, PrivateDialogService } from './directives/host-ref.directive';
+import { DialogContainerService, HostRefDirective } from './directives/host-ref.directive';
 import { DialogRef } from '@app/services/dialog/dialog-ref';
 
 @Component({
@@ -8,8 +8,8 @@ import { DialogRef } from '@app/services/dialog/dialog-ref';
     styleUrls: ['dialog.component.scss'],
     providers: [
         {
-            provide: 'ssc-private-dialog-service',
-            useClass: PrivateDialogService,
+            provide: 'dialog-container-service',
+            useClass: DialogContainerService,
         },
     ],
 })
@@ -20,7 +20,7 @@ export class DialogComponent {
 
     constructor(
         private dialogRef: DialogRef,
-        @Inject('ssc-private-dialog-service') private shared: PrivateDialogService,
+        @Inject('dialog-container-service') private shared: DialogContainerService,
     ) {
         shared.onContainerCreated((container: ViewContainerRef) => {
             this.vc = container;
