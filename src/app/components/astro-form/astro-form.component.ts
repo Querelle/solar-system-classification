@@ -1,6 +1,6 @@
-import { AfterContentChecked, Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IAstro, MeasurementType } from '../../interfaces/astro.interface';
+import { IAstro, MeasurementType } from '@app/interfaces/astro.interface';
 import { AstroValidators } from './helpers/astro.validators';
 
 @Component({
@@ -8,7 +8,7 @@ import { AstroValidators } from './helpers/astro.validators';
     templateUrl: 'astro-form.component.html',
     styleUrls: ['astro-form.component.scss'],
 })
-export class AstroFormComponent implements AfterContentChecked {
+export class AstroFormComponent {
     @Output() submitted: EventEmitter<IAstro> = new EventEmitter<IAstro>();
 
     public astroMeasures = MeasurementType;
@@ -52,7 +52,15 @@ export class AstroFormComponent implements AfterContentChecked {
     }
 
     public changed(node: string): void {
-        this.astroForm.get(`${node}.measurement`)?.reset();
+        let nodeRef = this.astroForm.get(`${node}`);
+        nodeRef?.get(`measurement`)?.reset();
+        if (nodeRef?.get('type')?.value === 'RANGE') {
+            nodeRef?.get('measurement.delta')?.setValidators([AstroValidators.isNumber]);
+            nodeRef?.get('measurement.delta')?.updateValueAndValidity();
+        } else {
+            nodeRef?.get('measurement.delta')?.clearValidators();
+            nodeRef?.get('measurement.delta')?.updateValueAndValidity();
+        }
     }
 
     public submit(): void {
@@ -61,26 +69,11 @@ export class AstroFormComponent implements AfterContentChecked {
             ({ firstname, lastname }: { firstname: string; lastname: string }): string => `${firstname} ${lastname}`,
         );
         const payload = Object.assign(this.astroForm.value, {
-            discoverers: discoverers,
+            discoverers,
             discovery_date: date.toISOString(),
         });
 
         this.submitted.emit(payload);
         this.astroForm.reset();
-    }
-
-    ngAfterContentChecked() {
-        if (this.astroForm.get('eq_diameter.type')?.value === 'RANGE') {
-            this.astroForm.get('eq_diameter.measurement.delta')?.setValidators([AstroValidators.isNumber]);
-            this.astroForm.get('eq_diameter.measurement.delta')?.updateValueAndValidity();
-        }
-        if (this.astroForm.get('albedo.type')?.value === 'RANGE') {
-            this.astroForm.get('albedo.measurement.delta')?.setValidators([AstroValidators.isNumber]);
-            this.astroForm.get('albedo.measurement.delta')?.updateValueAndValidity();
-        }
-        if (this.astroForm.get('av_sun_earth.type')?.value === 'RANGE') {
-            this.astroForm.get('av_sun_earth.measurement.delta')?.setValidators([AstroValidators.isNumber]);
-            this.astroForm.get('av_sun_earth.measurement.delta')?.updateValueAndValidity();
-        }
     }
 }

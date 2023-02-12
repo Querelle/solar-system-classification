@@ -1,0 +1,24 @@
+.form-page--wrapper {
+  padding: 16px;
+  max-height: 90vh;
+  overflow: scroll;
+  scroll-behavior: smooth;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+
+    .title--wrapper {
+      .form-title {
+        display: flex;
+        flex-direction: column;
+
+        h2, h3 {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

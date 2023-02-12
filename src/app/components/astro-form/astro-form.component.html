@@ -1,64 +1,67 @@
-<div class="container">
-    <form [formGroup]="astroForm" class="astro-form--wrapper">
-        <section class="astro-form--section">
-            <h4 class="title">General information</h4>
-            <div class="astro-form-section--inputs">
-                <div [ngClass]="astroForm.get('code')!.touched && astroForm.get('code')!.hasError('required') ? 'warn' : ''"
-                     class="control-wrapper">
-                    <label>Code <sup class="required">*</sup></label>
-                    <input formControlName="code" name="code" type="text">
-                    <span class="error">This field is <b>required</b>.</span>
+<div class='container'>
+    <form [formGroup]='astroForm' class='astro-form--wrapper'>
+        <section class='astro-form--section'>
+            <h4 class='title'>General information</h4>
+            <div class='astro-form-section--inputs'>
+                <div
+                    [ngClass]="astroForm.get('code')!.touched && astroForm.get('code')!.hasError('required') ? 'warn' : ''"
+                    class='control-wrapper'>
+                    <label>Code <sup class='required'>*</sup></label>
+                    <input formControlName='code' name='code' type='text'>
+                    <span class='error'>This field is <b>required</b>.</span>
                 </div>
 
-                <div [ngClass]="astroForm.get('name')!.touched && astroForm.get('name')!.hasError('required') ? 'warn' : ''"
-                     class="control-wrapper">
-                    <label>Name <sup class="required">*</sup></label>
-                    <input formControlName="name" name="name" type="text">
-                    <span class="error">This field is <b>required</b>.</span>
+                <div
+                    [ngClass]="astroForm.get('name')!.touched && astroForm.get('name')!.hasError('required') ? 'warn' : ''"
+                    class='control-wrapper'>
+                    <label>Name <sup class='required'>*</sup></label>
+                    <input formControlName='name' name='name' type='text'>
+                    <span class='error'>This field is <b>required</b>.</span>
                 </div>
 
-                <div [ngClass]="astroForm.get('discovery_date')!.touched && astroForm.get('discovery_date')!.hasError('required') ? 'warn' : ''"
-                     class="control-wrapper">
-                    <label>Date of Discovery <sup class="required">*</sup></label>
-                    <input formControlName="discovery_date" name="discovery_date" type="date">
-                    <span class="error">This field is <b>required</b>.</span>
+                <div
+                    [ngClass]="astroForm.get('discovery_date')!.touched && astroForm.get('discovery_date')!.hasError('required') ? 'warn' : ''"
+                    class='control-wrapper'>
+                    <label>Date of Discovery <sup class='required'>*</sup></label>
+                    <input formControlName='discovery_date' name='discovery_date' type='date'>
+                    <span class='error'>This field is <b>required</b>.</span>
                 </div>
             </div>
         </section>
 
 
-        <form class="sub-group--wrapper" formGroupName="eq_diameter">
-            <h4 class="title">Eq. diameter</h4>
+        <form class='sub-group--wrapper' formGroupName='eq_diameter'>
+            <h4 class='title'>Eq. diameter</h4>
 
-            <div class="astro-form-section--inputs">
+            <div class='astro-form-section--inputs'>
                 <div [ngClass]="astroForm.get('eq_diameter.type')!.touched &&
                     astroForm.get('eq_diameter.type')!.hasError('required') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Measurement type <sup class="required">*</sup></label>
-                    <select #eq_diameter (change)="changed('eq_diameter')" formControlName="type" name="type">
-                        <option value="">Choose an option...</option>
-                        <option *ngFor="let type of astroMeasures | keyvalue"
-                                value="{{type.key}}">{{type.value}}</option>
+                     class='control-wrapper fixed-width'>
+                    <label>Measurement type <sup class='required'>*</sup></label>
+                    <select #eq_diameter (change)="changed('eq_diameter')" formControlName='type' name='type'>
+                        <option value=''>Choose an option...</option>
+                        <option *ngFor='let type of astroMeasures | keyvalue'
+                                value='{{type.key}}'>{{type.value}}</option>
                     </select>
-                    <span class="error">This field is <b>required</b>.</span>
+                    <span class='error'>This field is <b>required</b>.</span>
                 </div>
 
-                <form class="astro-form-section--inputs" formGroupName="measurement">
+                <form class='astro-form-section--inputs' formGroupName='measurement'>
                     <div [ngClass]="astroForm.get('eq_diameter.measurement.value')!.touched &&
                         astroForm.get('eq_diameter.measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
-                         class="control-wrapper fixed-width">
-                        <label>Value <sup class="required">*</sup></label>
-                        <input formControlName="value" name="value" type="text">
-                        <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                         class='control-wrapper fixed-width'>
+                        <label>Value <sup class='required'>*</sup></label>
+                        <input formControlName='value' name='value' type='text'>
+                        <span class='error'>This field must be a <b>proper number different from 0</b>.</span>
                     </div>
 
                     <ng-container *ngIf="eq_diameter.value === 'RANGE'">
                         <div [ngClass]="astroForm.get('eq_diameter.measurement.delta')!.touched &&
                         astroForm.get('eq_diameter.measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
-                             class="control-wrapper fixed-width">
-                            <label>Delta <sup class="required">*</sup></label>
-                            <input formControlName="delta" name="delta" type="text">
-                            <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                             class='control-wrapper fixed-width'>
+                            <label>Delta <sup class='required'>*</sup></label>
+                            <input formControlName='delta' name='delta' type='text'>
+                            <span class='error'>This field must be a <b>proper number different from 0</b>.</span>
                         </div>
                     </ng-container>
                 </form>
@@ -66,38 +69,38 @@
             </div>
         </form>
 
-        <form class="sub-group--wrapper" formGroupName="albedo">
-            <h4 class="title">Albedo</h4>
+        <form class='sub-group--wrapper' formGroupName='albedo'>
+            <h4 class='title'>Albedo</h4>
 
-            <div class="astro-form-section--inputs">
+            <div class='astro-form-section--inputs'>
                 <div [ngClass]="astroForm.get('albedo.type')!.touched &&
                     astroForm.get('albedo.type')!.hasError('required') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Measurement type <sup class="required">*</sup></label>
-                    <select #albedo (change)="changed('albedo')" formControlName="type" name="type">
-                        <option value="">Choose an option...</option>
-                        <option *ngFor="let type of astroMeasures | keyvalue"
-                                value="{{type.key}}">{{type.value}}</option>
+                     class='control-wrapper fixed-width'>
+                    <label>Measurement type <sup class='required'>*</sup></label>
+                    <select #albedo (change)="changed('albedo')" formControlName='type' name='type'>
+                        <option value=''>Choose an option...</option>
+                        <option *ngFor='let type of astroMeasures | keyvalue'
+                                value='{{type.key}}'>{{type.value}}</option>
                     </select>
-                    <span class="error">This field is <b>required</b>.</span>
+                    <span class='error'>This field is <b>required</b>.</span>
                 </div>
 
-                <form class="astro-form-section--inputs" formGroupName="measurement">
+                <form class='astro-form-section--inputs' formGroupName='measurement'>
                     <div [ngClass]="astroForm.get('albedo.measurement.value')!.touched &&
                         astroForm.get('albedo.measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
-                         class="control-wrapper fixed-width">
-                        <label>Value <sup class="required">*</sup></label>
-                        <input formControlName="value" name="value" type="text">
-                        <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                         class='control-wrapper fixed-width'>
+                        <label>Value <sup class='required'>*</sup></label>
+                        <input formControlName='value' name='value' type='text'>
+                        <span class='error'>This field must be a <b>proper number different from 0</b>.</span>
                     </div>
 
                     <ng-container *ngIf="albedo.value === 'RANGE'">
                         <div [ngClass]="astroForm.get('albedo.measurement.delta')!.touched &&
                         astroForm.get('albedo.measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
-                             class="control-wrapper fixed-width">
-                            <label>Delta <sup class="required">*</sup></label>
-                            <input formControlName="delta" name="delta" type="text">
-                            <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                             class='control-wrapper fixed-width'>
+                            <label>Delta <sup class='required'>*</sup></label>
+                            <input formControlName='delta' name='delta' type='text'>
+                            <span class='error'>This field must be a <b>proper number different from 0</b>.</span>
                         </div>
                     </ng-container>
                 </form>
@@ -105,83 +108,83 @@
             </div>
         </form>
 
-        <form class="sub-group--wrapper" formGroupName="av_sun_earth">
-            <h4 class="title">Av. Distance from the sun</h4>
+        <form class='sub-group--wrapper' formGroupName='av_sun_earth'>
+            <h4 class='title'>Av. Distance from the sun</h4>
 
-            <div class="astro-form-section--inputs">
+            <div class='astro-form-section--inputs'>
                 <div [ngClass]="astroForm.get('av_sun_earth.type')!.touched &&
                     astroForm.get('av_sun_earth.type')!.hasError('required') ? 'warn' : ''"
-                     class="control-wrapper fixed-width">
-                    <label>Measurement type <sup class="required">*</sup></label>
-                    <select #av_sun_earth (change)="changed('av_sun_earth')" formControlName="type"
-                            name="type">
-                        <option value="">Choose an option...</option>
-                        <option *ngFor="let type of astroMeasures | keyvalue"
-                                value="{{type.key}}">{{type.value}}</option>
+                     class='control-wrapper fixed-width'>
+                    <label>Measurement type <sup class='required'>*</sup></label>
+                    <select #av_sun_earth (change)="changed('av_sun_earth')" formControlName='type'
+                            name='type'>
+                        <option value=''>Choose an option...</option>
+                        <option *ngFor='let type of astroMeasures | keyvalue'
+                                value='{{type.key}}'>{{type.value}}</option>
                     </select>
-                    <span class="error">This field is <b>required</b>.</span>
+                    <span class='error'>This field is <b>required</b>.</span>
                 </div>
 
-                <form class="astro-form-section--inputs" formGroupName="measurement">
+                <form class='astro-form-section--inputs' formGroupName='measurement'>
                     <div [ngClass]="astroForm.get('av_sun_earth.measurement.value')!.touched &&
                         astroForm.get('av_sun_earth.measurement.value')!.hasError('not_a_number') ? 'warn' : ''"
-                         class="control-wrapper fixed-width">
-                        <label>Value <sup class="required">*</sup></label>
-                        <input formControlName="value" name="value" type="text">
-                        <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                         class='control-wrapper fixed-width'>
+                        <label>Value <sup class='required'>*</sup></label>
+                        <input formControlName='value' name='value' type='text'>
+                        <span class='error'>This field must be a <b>proper number different from 0</b>.</span>
                     </div>
 
                     <ng-container *ngIf="av_sun_earth.value === 'RANGE'">
                         <div [ngClass]="astroForm.get('av_sun_earth.measurement.delta')!.touched &&
                         astroForm.get('av_sun_earth.measurement.delta')!.hasError('not_a_number') ? 'warn' : ''"
-                             class="control-wrapper fixed-width">
-                            <label>Delta <sup class="required">*</sup></label>
-                            <input formControlName="delta" name="delta" type="text">
-                            <span class="error">This field must be a <b>proper number different from 0</b>.</span>
+                             class='control-wrapper fixed-width'>
+                            <label>Delta <sup class='required'>*</sup></label>
+                            <input formControlName='delta' name='delta' type='text'>
+                            <span class='error'>This field must be a <b>proper number different from 0</b>.</span>
                         </div>
                     </ng-container>
                 </form>
             </div>
         </form>
 
-        <form class="sub-group--wrapper" formArrayName="discoverers">
-            <h4 class="title">Discoverer(s)</h4>
-            <ssc-base-button (clicked)="pushNewDiscoverer()"
-                             class="action-button"
-                             icon="person_add"
-                             label="Add a new discoverer"
+        <form class='sub-group--wrapper' formArrayName='discoverers'>
+            <h4 class='title'>Discoverer(s)</h4>
+            <ssc-base-button (clicked)='pushNewDiscoverer()'
+                             class='action-button'
+                             icon='person_add'
+                             label='Add a new discoverer'
             ></ssc-base-button>
-            <ng-container *ngFor="let discoverer of discoverers?.controls; let i = index">
-                <form class="discoverer--wrapper" formGroupName="{{i}}">
-                    <div [ngClass]="discoverers.at(i).get('firstname')!.touched && discoverers.at(i).get('firstname')!.hasError('required') ? 'warn' : ''"
-                         class="control-wrapper">
-                        <label>Firstname <sup class="required">*</sup></label>
-                        <input formControlName="firstname" name="firstname" type="text">
-                        <span class="error">This field is <b>required</b>.</span>
+            <ng-container *ngFor='let discoverer of discoverers?.controls; let i = index'>
+                <form class='discoverer--wrapper' formGroupName='{{i}}'>
+                    <div
+                        [ngClass]="discoverers.at(i).get('firstname')!.touched && discoverers.at(i).get('firstname')!.hasError('required') ? 'warn' : ''"
+                        class='control-wrapper'>
+                        <label>Firstname <sup class='required'>*</sup></label>
+                        <input formControlName='firstname' name='firstname' type='text'>
+                        <span class='error'>This field is <b>required</b>.</span>
                     </div>
 
-                    <div [ngClass]="discoverers.at(i).get('lastname')!.touched && discoverers.at(i).get('lastname')!.hasError('required') ? 'warn' : ''"
-                         class="control-wrapper">
-                        <label>Lastname <sup class="required">*</sup></label>
-                        <input formControlName="lastname" name="lastname" type="text">
-                        <span class="error">This field is <b>required</b>.</span>
+                    <div
+                        [ngClass]="discoverers.at(i).get('lastname')!.touched && discoverers.at(i).get('lastname')!.hasError('required') ? 'warn' : ''"
+                        class='control-wrapper'>
+                        <label>Lastname <sup class='required'>*</sup></label>
+                        <input formControlName='lastname' name='lastname' type='text'>
+                        <span class='error'>This field is <b>required</b>.</span>
                     </div>
-                    <div class="button--container">
-                        <ssc-base-button (clicked)="removeDiscovererAtIndex(i)"
-                                         *ngIf="!(discoverers?.controls?.length === 1)"
-                                         icon="person_remove"
+                    <div class='button--container'>
+                        <ssc-base-button (clicked)='removeDiscovererAtIndex(i)'
+                                         *ngIf='!(discoverers?.controls?.length === 1)'
+                                         icon='person_remove'
                         ></ssc-base-button>
                     </div>
                 </form>
             </ng-container>
         </form>
 
-        <div class="action--container">
-            <ssc-base-button (clicked)="submit()" [disabled_btn]="astroForm.invalid"
-                             icon="save"
-                             label="Submit"></ssc-base-button>
-            <span>or </span>
-            <ssc-basic-link [fontSize]="'26px'" [label]="'Back to Home'" [path]="'/'"></ssc-basic-link>
+        <div class='action--container'>
+            <ssc-base-button (clicked)='submit()' [disabled_btn]='astroForm.invalid'
+                             icon='save'
+                             label='Submit'></ssc-base-button>
         </div>
     </form>
 </div>

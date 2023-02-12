@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IAstro, IAstros } from '../../interfaces/astro.interface';
+import { IAstro, IAstros } from '@app/interfaces/astro.interface';
 import { Observable } from 'rxjs';
 
 @Component({

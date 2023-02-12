@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscriber } from 'rxjs';
-import { data } from '../../data';
-import { IAstro, IAstros } from '../interfaces/astro.interface';
+import { data } from '../../../data';
+import { IAstro, IAstros } from '@app/interfaces/astro.interface';
 
 @Injectable({
     providedIn: 'root',

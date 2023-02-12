@@ -1,14 +1,11 @@
-<ng-container *ngIf="astro$ | async">
-    <div class="container">
-        <div class="title--wrapper">
-            <div class="title">
+<ng-container *ngIf='astro$ | async'>
+    <div class='container'>
+        <div class='title--wrapper'>
+            <div class='title'>
                 <h2>Have you find a new object?</h2>
-                <ssc-basic-link [fontSize]="'24px'"
-                                [underlineColor]="'#4CC9F0'"
-                                label="Tell us"
-                                path="new-object"></ssc-basic-link>
+                <ssc-base-button label='Tell us' icon='history_edu' (clicked)='openDialog()'></ssc-base-button>
             </div>
         </div>
-        <ssc-astro-table [astro$]="astro$"></ssc-astro-table>
+        <ssc-astro-table [astro$]='astro$'></ssc-astro-table>
     </div>
 </ng-container>

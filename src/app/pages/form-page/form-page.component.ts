@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AstroService } from '../../services/astro.service';
-import { IAstro } from '../../interfaces/astro.interface';
+import { AstroService } from '@app/services/astro/astro.service';
+import { IAstro } from '@app/interfaces/astro.interface';
 
 @Component({
     selector: 'ssc-form-page',

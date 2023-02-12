@@ -1,0 +1,32 @@
+@import '/src/common';
+
+.overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba($bg-layer, 85%);
+
+  .dialog-card {
+    border-radius: 8px;
+    padding: 24px;
+    background-color: #ffffff;
+    max-height: 100%;
+    width: fit-content;
+
+
+    .card-bar {
+      margin: -12px -12px 0 0;
+      display: flex;
+      justify-content: flex-end;
+
+      .cancel-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}

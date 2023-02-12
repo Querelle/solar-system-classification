@@ -2,7 +2,7 @@
 
 ## First steps
 
-- After downloading the repo from github, be sure to run the "npm install" command;
+- After downloading the repo from gitHub, be sure to run the "npm install" command;
 - To start the serve use the command `ng serve --open` or `ng serve --open --port <port number>`
 
 ## Overview
