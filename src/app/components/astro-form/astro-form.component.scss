@@ -5,6 +5,7 @@
   flex-direction: column;
   align-content: center;
   align-items: center;
+  width: 91vw;
 }
 
 .astro-form--wrapper {
@@ -104,6 +105,10 @@
 }
 
 @media screen and (min-width: 1200px) {
+  .container {
+    width: fit-content;
+  }
+  
   .astro-form--wrapper {
     width: 935px;
 

@@ -1,4 +1,4 @@
-import { IAstros, MeasurementType } from './app/interfaces/astro.interface';
+import { IAstros, MeasurementType } from '@app/interfaces/astro.interface';
 
 export const data: IAstros = [
     {

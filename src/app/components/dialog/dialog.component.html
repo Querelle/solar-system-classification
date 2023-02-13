@@ -1,0 +1,8 @@
+<div (click)='closeDialog()' class='overlay'>
+    <div (click)='doNotCloseDialog($event)' class='dialog-card'>
+        <div class='card-bar'>
+            <span (click)='closeDialog()' class='material-symbols-outlined cancel-icon'>cancel</span>
+        </div>
+        <ng-template sscHostWrapper></ng-template>
+    </div>
+</div>

@@ -13,13 +13,24 @@ import { BaseButtonComponent } from './components/base-button/base-button.compon
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { FormPageComponent } from './pages/form-page/form-page.component';
 import { BasicLinkComponent } from './components/basic-link/basic-link.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { HostRefDirective } from './components/dialog/directives/host-ref.directive';
+import { FormDialogComponent } from './pages/form-dialog/form-dialog.component';
 
 const PIPES = [ConcatPipe, MeasurementRenderPipe];
-const PAGES = [TablePageComponent, FormPageComponent];
-const COMPONENTS = [HeaderComponent, AstroTableComponent, AstroFormComponent, BaseButtonComponent, BasicLinkComponent];
+const DIRECTIVES = [HostRefDirective];
+const PAGES = [TablePageComponent, FormPageComponent, FormDialogComponent];
+const COMPONENTS = [
+    HeaderComponent,
+    AstroTableComponent,
+    AstroFormComponent,
+    BaseButtonComponent,
+    BasicLinkComponent,
+    DialogComponent,
+];
 
 @NgModule({
-    declarations: [AppComponent, ...PAGES, ...COMPONENTS, ...PIPES],
+    declarations: [AppComponent, ...PAGES, ...COMPONENTS, ...PIPES, ...DIRECTIVES],
     imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],

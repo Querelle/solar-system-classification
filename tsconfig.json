@@ -4,6 +4,14 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@environment/*": [
+        "./src/environments/*"
+      ]
+    },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
